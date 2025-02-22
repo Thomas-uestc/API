@@ -10,6 +10,12 @@ Template
 └── your script   # should be placed at the same level as 'export'
 
 
+- **datasets**：存放数据集文件。
+- **export**：存放导出的模型文件。
+- **mats**：存放 `.mat` 格式的中间结果或统计数据。
+- **result**：存放模型的预训练参数或最终分析结果。
+- **your script**：此文件夹存放与 `export` 文件夹同级的脚本文件（如训练脚本、数据处理脚本等）。
+
 ## Usage Guide for `heatmap_generator` Package
 
 The `heatmap_generator` package provides tools to visualize the different stages results of our RPCANet++ on various scenarios from different datasets.
