@@ -1,5 +1,15 @@
 # Function_usage
 
+## Download 
+
+Template
+├── datasets      # store datasets
+├── export        # store the model
+├── mats          # store intermediate results or statistics
+├── result        # store the pretrained parameters of the model
+└── your script   # should be placed at the same level as 'export'
+
+
 ## Usage Guide for `heatmap_generator` Package
 
 The `heatmap_generator` package provides tools to visualize the different stages results of our RPCANet++ on various scenarios from different datasets.
