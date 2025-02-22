@@ -2,19 +2,14 @@
 
 ## Download 
 
-Template
-├── datasets      # store datasets
-├── export        # store the model
-├── mats          # store intermediate results or statistics
-├── result        # store the pretrained parameters of the model
-└── your script   # should be placed at the same level as 'export'
+Please download 'Template.zip'.
 
+- **datasets**：store datasets
+- **export**：store the model
+- **mats**：store intermediate results or statistics
+- **result**：store the pretrained parameters of the model
+- **your script**：should be placed at the same level as 'export'
 
-- **datasets**：存放数据集文件。
-- **export**：存放导出的模型文件。
-- **mats**：存放 `.mat` 格式的中间结果或统计数据。
-- **result**：存放模型的预训练参数或最终分析结果。
-- **your script**：此文件夹存放与 `export` 文件夹同级的脚本文件（如训练脚本、数据处理脚本等）。
 
 ## Usage Guide for `heatmap_generator` Package
 
@@ -78,8 +73,8 @@ The `heatmap` function accepts the following parameters:
     heatmap_gen = HeatmapGenerator(model_name="rpcanetma9",model_path="./result/best.pkl", use_cuda=True)
 
     heatmap = heatmap_gen.generate_heatmap(
-        img_path="./datasets/test/xxxxx.png",
-        data_name="test",
+        img_path="./datasets/NUDT-SIRST/test/xxxxx.png",
+        data_name="NUDT-SIRST",
         output_mat="./mats/heatmap",
         output_png="./mats/heatmap/png"
     )
@@ -160,16 +155,16 @@ The `draw_lowrank` function accepts the following parameters:
     
     # Calculate the low-rankness verification and save with .m format
     lowrank = Lowrank_C.calculate(
-        img_path="./datasets/test",
+        img_path="./datasets/NUDT-SIRST/test",
         model_name="rpcanetma9",
-        data_name="test",
+        data_name="NUDT-SIRST",
         save_dir= './mats/lowrank'
     )
     
     # Draw the low-rankness verification and save with .png format
     draw_lowrank = Lowrank_C.draw_lowrank(
         model_name="rpcanetma9",
-        data_name="test",
+        data_name="NUDT-SIRST",
         mat_dir= './mats/lowrank',
         save_dir = './mats/lowrank/figure'
     )
@@ -245,9 +240,9 @@ The `Sparsity` function accepts the following parameters:
 
     # calculate sparsity and save as .m format
     Sparsity = Sparsity_C.calculate(
-        img_path="./datasets/test",
+        img_path="./datasets/NUDT-SIRST/test",
         model_name="rpcanetma9",
-        data_name="test",
+        data_name="NUDT-SIRST",
         save_dir = './mats/sparsity'
     )
 
