@@ -97,7 +97,7 @@ The `dulrs_class.sparsity_cal` function accepts the following parameters:
 
 #### Examples
 
-1. **For given model RPCANetma9**
+1. **For given model RPCANet9**
 
     Place the following script at the same level as file 'export' 
 
@@ -105,7 +105,7 @@ The `dulrs_class.sparsity_cal` function accepts the following parameters:
     from dulrs import dulrs_class
     # Initial model
     dulrs = dulrs_class(
-        model_name="rpcanetma9", 
+        model_name="rpcanet9", 
         model_path="./result/best.pkl",     # Path for pretrained parameters
         use_cuda=True)
 
@@ -120,14 +120,14 @@ The `dulrs_class.sparsity_cal` function accepts the following parameters:
     # For lowrank calculation
     lowrank_matrix = dulrs.lowrank_cal(
         img_path="./datasets/NUDT-SIRST/test/images",
-        model_name="rpcanetma9",
+        model_name="rpcanet9",
         data_name="NUDT-SIRST",
         save_dir= './mats/lowrank' # Save path for result with mat format
     )
 
     # For lowrank paint based on calculation
     lowrank_matrix_draw = dulrs.lowrank_draw(
-        model_name="rpcanetma9",
+        model_name="rpcanet9",
         data_name="NUDT-SIRST",
         mat_dir= './mats/lowrank',         
         save_dir = './mats/lowrank/figure' # Save path for result with png format
@@ -136,7 +136,7 @@ The `dulrs_class.sparsity_cal` function accepts the following parameters:
     # For sparsity calculation
     sparsity_matrix = dulrs.sparsity_cal(
         img_path="./datasets/NUDT-SIRST/test/images",
-        model_name="rpcanetma9",
+        model_name="rpcanet9",
         data_name="NUDT-SIRST",
         save_dir = './mats/sparsity'        # Save path for result with mat format
     )
