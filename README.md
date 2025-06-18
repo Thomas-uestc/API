@@ -128,6 +128,8 @@ Ensure that the main execution script is placed in the **same directory** as the
 >     └── [dataset_contents]
 > ```
 
+### 📜 Script Example
+
    ```python
     from dulrs import dulrs_class
     import torch
