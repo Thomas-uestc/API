@@ -98,7 +98,7 @@ The `dulrs_class.sparsity_cal` function accepts the following parameters:
 
 ## Examples
 
-1. Model: RPCANet9
+1. Model: RPCANet_pp
 
 Please follow the instructions below to set up the dataset and run the model:
 
