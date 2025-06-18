@@ -36,7 +36,7 @@ from dulrs import dulrs_class
 
 The package includes the following functions:
 
-0. `dulrs_class(model_name, model_path, use_cuda=True)`
+0. `dulrs_class(model_name, model_path, use_cuda=True, num_stages=6)`
 1. `dulrs_class.heatmap(img_path, data_name,output_mat,output_png)`
 2. `dulrs_class.lowrank_cal(img_path, model_name, data_name, save_dir)`
 3. `dulrs_class.lowrank_draw(model_name, data_name, mat_dir, save_dir)`
@@ -44,7 +44,7 @@ The package includes the following functions:
 
 ### Function Descriptions and Examples
 
-#### 0. `dulrs_class(model_name, model_path, use_cuda=True)`
+#### 0. `dulrs_class(model_name, model_path, use_cuda=True, num_stages=6)`
 The `dulrs_class` in the `dulrs` package is used to initialize the models with pretrained parameters and including following fucntions.
 
 #### 1. `dulrs_class.heatmap(img_path, data_name, output_mat, output_png)`
@@ -70,6 +70,7 @@ The `dulrs_class` accepts the following parameters:
 - `model_name`: refer to the model which is underestimated.
 - `model_path`: the pretrained parameters pkl path.
 - `use_cuda`: Determined whether use GPU for acceleration.
+- `num_stages`: Determined the number of saving stages.
 
 The `dulrs_class.heatmap` function accepts the following parameters:
 - `img_path`: refer to the testing image.
@@ -98,46 +99,53 @@ The `dulrs_class.sparsity_cal` function accepts the following parameters:
 #### Examples
 
 1. **For given model RPCANet9**
-
+    Download the datasets from: https://drive.google.com/file/d/1sLU4KFoYF5Sczo-Laf9B7AhN8ya3Oy-p/view?usp=drive_link
+    Place the dataset into ./datasets/
     Place the following script at the same level as file 'export' 
 
    ```python
     from dulrs import dulrs_class
-    # Initial model
+    import torch
+
+    # Set CUDA as default device
+    torch.set_default_tensor_type('torch.cuda.FloatTensor' if torch.cuda.is_available()     else 'torch.FloatTensor')
+
     dulrs = dulrs_class(
-        model_name="rpcanet9", 
-        model_path="./result/best.pkl",     # Path for pretrained parameters
-        use_cuda=True)
+    model_name="rpcanet_pp",
+    model_path="./result/ISTD/1K/s6_best.pkl",     # Path for pretrained parameters
+    num_stages=6,
+    use_cuda=True)
 
     # For heatmap generation
     heatmap = dulrs.heatmap(
-        img_path="./datasets/NUDT-SIRST/test/images/000001.png",
-        data_name="NUDT-SIRST_test_images_000001",
-        output_mat="./heatmap/mat",  # If users want to save the data as mat format. Default=None
-        output_png="./heatmap/png"   # If users want to save the figure as png format. Default=None
+        img_path="./datasets/IRSTD-1k/test/images/000009.png",
+        data_name="IRSTD-1k_test_images_000009",
+        output_mat="./heatmap/mat",  # If users want to save the data as mat format.    Default=None
+        output_png="./heatmap/png"   # If users want to save the figure as png format.  Default=None
     )
 
     # For lowrank calculation
     lowrank_matrix = dulrs.lowrank_cal(
-        img_path="./datasets/NUDT-SIRST/test/images",
-        model_name="rpcanet9",
-        data_name="NUDT-SIRST",
-        save_dir= './mats/lowrank' # Save path for result with mat format
+        img_path="./datasets/IRSTD-1k/test/images",
+        model_name="rpcanet_pp",
+        data_name="IRSTD-1k",
+        save_dir= "./mats/lowrank"
     )
 
     # For lowrank paint based on calculation
     lowrank_matrix_draw = dulrs.lowrank_draw(
-        model_name="rpcanet9",
-        data_name="NUDT-SIRST",
-        mat_dir= './mats/lowrank',         
+        model_name="rpcanet_pp",
+        data_name="IRSTD-1k",
+        mat_dir= './mats/lowrank',
         save_dir = './mats/lowrank/figure' # Save path for result with png format
     )
 
     # For sparsity calculation
     sparsity_matrix = dulrs.sparsity_cal(
-        img_path="./datasets/NUDT-SIRST/test/images",
-        model_name="rpcanet9",
-        data_name="NUDT-SIRST",
+        img_path="./datasets/IRSTD-1k/test/images",
+        model_name="rpcanet_pp",
+        data_name="IRSTD-1k",
         save_dir = './mats/sparsity'        # Save path for result with mat format
     )
    ```
+
