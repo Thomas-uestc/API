@@ -125,7 +125,7 @@ Ensure that the main execution script is placed in the **same directory** as the
 > ├── export/
 > ├── your_main_script.py
 > └── datasets/
->     └── [dataset_contents]
+>     └── [IRSTD-1k]
 > ```
 
 ### 📜 Script Example
