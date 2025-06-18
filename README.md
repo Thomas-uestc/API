@@ -6,7 +6,7 @@ Please download 'Template.zip'.
 
 ### Description of Folders
 
-- **datasets**: This folder holds the raw datasets used for the project. 
+- **datasets**: This folder should hold the raw datasets used for the project. 
 - **export**: This folder is for files that include models.
 - **result**: This folder is for pretrained model parameters
 - **mats**: This directory stores MATLAB-related files, such as `.mat` files or other results generated during computation.
@@ -96,12 +96,37 @@ The `dulrs_class.sparsity_cal` function accepts the following parameters:
 - `data_name`: refer to the name of testing image.
 - `save_dir`: save path for sparsity result with mat format.
 
-#### Examples
+## Examples
 
-1. **For given model RPCANet9**
-    Download the datasets from: https://drive.google.com/file/d/1sLU4KFoYF5Sczo-Laf9B7AhN8ya3Oy-p/view?usp=drive_link
-    Place the dataset into ./datasets/
-    Place the following script at the same level as file 'export' 
+1. Model: RPCANet9
+
+Please follow the instructions below to set up the dataset and run the model:
+
+### 📥 Download Dataset
+Download the dataset from the following link:
+
+[📎 Google Drive - IRSTD-1k Dataset](https://drive.google.com/file/d/1sLU4KFoYF5Sczo-Laf9B7AhN8ya3Oy-p/view?usp=drive_link)
+
+### 📂 Directory Setup
+After downloading:
+
+1. Extract the contents of the archive.
+2. Place the extracted dataset folder into the following path:
+   ```
+   ./datasets/
+   ```
+
+### 📜 Script Placement
+Ensure that the main execution script is placed in the **same directory** as the `export` file.
+
+> 📌 Example directory structure:
+> ```
+> .
+> ├── export/
+> ├── your_main_script.py
+> └── datasets/
+>     └── [dataset_contents]
+> ```
 
    ```python
     from dulrs import dulrs_class
